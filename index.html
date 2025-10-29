@@ -10,6 +10,59 @@
 		<!-- Slick Slider CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+        
+        <!-- Protection Styles -->
+        <style>
+            body {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            
+            /* Hide source on print */
+            @media print {
+                body { display: none; }
+            }
+        </style>
+        
+        <!-- Protection Scripts -->
+        <script>
+            // Disable right click
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Disable keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && (
+                    e.key === 'u' || // View source
+                    e.key === 's' || // Save
+                    e.key === 'i' || // Inspect
+                    e.key === 'j'    // Javascript console
+                )) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Console warning
+            console.log('%cStop!', 'color: red; font-size: 40px; font-weight: bold;');
+            console.log('%cThis website is protected. All actions are being monitored and logged.', 'color: red; font-size: 16px;');
+            
+            // Disable DevTools
+            setInterval(function() {
+                function check() {
+                    if(window.outerHeight - window.innerHeight > 100 || 
+                       window.outerWidth - window.innerWidth > 100) {
+                        document.body.innerHTML = 'DevTools detected. Page protected.';
+                    }
+                }
+                check();
+                window.addEventListener('resize', check);
+            }, 1000);
+        </script>
 	</head>
 	<body>
 		<!-- Preloader -->
